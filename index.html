@@ -2,31 +2,254 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>一首歌</title>
+    <title>Title</title>
     <style type="text/css">
-        body{
-            background-image: url(./images/libai.jpg);
-            background-size: 100% 100%;
-            height: 100%;
+        *{
+            margin: 0;/*外边距*/
+            padding: 0;/*内边距*/
+            /*
+            margin-top: 上 bottom left right
+            margin:10px;上下左右都相等 10
+            margin:10px 20px; 上下10 左右20
+            margin:10px 20px 30px; 上10 左右20 下30
+            margin:10px 20px 30px 40px； 上右下左 顺时针
+            padding同理
+            */
         }
-        html{
-            height: 100%;
+
+        #firstbox{
+            width: 320px;
+            height: 600px;
+            background: blue;/*可直接加图片地址用url*/
+            margin: 50px auto;
         }
-        @keyframes firstanimation {
-            from{opacity: 0}
-            to{opacity: 100}
+        .top{
+            width: 320px;
+            height: 30px;
+            background: black;
         }
-        h1,p{
-            animation: firstanimation 2s infinite;
+        .title{
+            width: 320px;
+            height: 30px;
+            background: aliceblue;
+            color: black;
+            text-align: center;
+            font-size: 24px;
+            font-weight: bold;/*bold=700(100-900)*/
+            line-height: 30px;/*行高*/
         }
+        .singer{
+            width: 320px;
+            height: 30px;
+            background: aliceblue;
+            color: black;
+            text-align: center;
+            font-size: 12px;
+            font-weight: bold;/*bold=700(100-900)*/
+            line-height: 30px;/*行高*/
+        }
+        .play{
+            width: 180px;
+            height: 180px;
+            background: black;
+            margin: 20px auto;
+            border-radius: 50%;/*设置圆角*/
+        }
+        .lrc{
+            width: 310px;
+            height: 275px;
+            border: 1px solid red;/*边框线：宽度 类型（实线）颜色*/
+            margin: auto;
+            text-align: center;
+            color: antiquewhite;
+            font-size: 12px;
+            line-height: 30px;
+            overflow: hidden;/*超出隐藏*/
+
+        }
+        /*用一个类名来保存旋转的功能*/
+        .rotate{
+            animation: rot 5s linear infinite;
+        }
+        @keyframes rot {
+            from{transform: rotate(0deg);
+            }
+            to{transform: rotate(360deg);
+                         }
+
+        }
+        #lrc{
+              display: none;
+        }
+        .content{
+            position: relative;/*相对定位*/
+            left:0;
+            top:0;
+        }
+
     </style>
+
 </head>
 <body>
-<audio src="./music/灵魂调音师 洛天依 - 起风了·李白篇.mp3" controls="controls"></audio>
-<h1> 起风了（李白篇）</h1>
-<p>我本不屑区区人间 奈何偏偏被仰为诗仙</p>
-<p>  十岁早把百书观遍 思赴长安宴</p>
-<p>  天涯浪迹 狂歌舞剑 做林下七贤</p>
-<p>  举杯投箸间 长眉忽一敛 功名却还未建</p>
+<!--<audio  src="music/灵魂调音师 洛天依 - 起风了·李白篇.mp3" autoplay="autoplay" controls="controls" ></audio>-->
+<!--    盒子模型标签 div 宽度 高度 位置-->
+
+
+<!--id表示唯一，不重复 class可重复-->
+    <div id="firstbox">
+        <div class="top"></div>
+        <div class="title"> 起风了(李白篇）</div>
+        <div class="singer">@灵魂调音师</div>
+        <div class="play"></div>
+        <div class="lrc">
+            <div class="content"></div>
+        </div>
+    </div>
+<audio  src="music/灵魂调音师 洛天依 - 起风了·李白篇.mp3" id="myfirstmusic" ></audio>
+<textarea id="lrc">
+[00:00.000]起风了·李白篇
+[00:04.000]词：盛唐-（bilibili）
+[00:08.000]曲：高桥优
+[00:12.000]
+[00:28.600]我本不屑区区人间
+[00:31.670]奈何偏偏被仰为诗仙
+[00:34.790]十岁早把百书观遍
+[00:37.910]思赴长安宴
+[00:40.950]天涯浪迹狂歌舞剑
+[00:44.230]做林下七贤
+[00:46.610]举杯投箸间
+[00:48.030]长眉忽一敛
+[00:49.560]功名却还未建
+[00:51.670]舞剑斗酒诗百篇
+[00:54.920]九州游遍
+[00:56.570]定要日月眉前指尖
+[00:59.420]就乘燕大笑出门去看落九天
+[01:04.340]只叹正值风流年
+[01:07.360]抱负难现
+[01:08.970]岂能低眉御用文前
+[01:11.880]拂衣而去戏龙城万丈远
+[01:17.710]我可十步一杀惩恶罪罚
+[01:21.530]亦可执笔 书生儒雅
+[01:24.790]长安酒家 天子不答 恼去随他
+[01:30.360]也曾梦乘舟云帆直挂
+[01:33.680]长恨不可大济天下
+[01:36.710]孤独惧怕 只有酒剑听话
+[01:42.690]明朝便散发 折你枝上花
+[01:49.680]
+[01:59.080]归来堂前 倚窗闲读
+[02:02.180]偶尔庆幸 得你当垆
+[02:05.180]长平树后轻唤我父 恍惚思无数
+[02:11.420]若是将就此生可渡 齐眉亦不负
+[02:17.020]大道如青天
+[02:18.450]我独不得出
+[02:19.980]漫漫长安路
+[02:22.250]舞剑斗酒诗百篇
+[02:25.370]九州游遍
+[02:27.050]定要日月眉前指尖
+[02:29.800]就乘燕大笑出门去看落九天
+[02:34.700]只叹正值风流年 抱负难现
+[02:39.450]岂能低眉御用文前
+[02:42.290]拂衣而去戏龙城万丈远
+[02:48.130]我可十步一杀惩恶罪罚
+[02:51.930]亦可执笔书生儒雅
+[02:55.180]长安酒家 天子不答 恼去随他
+[03:00.730]也曾梦乘舟云帆直挂
+[03:03.950]长恨不可大济天下
+[03:07.080]孤独惧怕 只有酒剑听话
+[03:14.010]起风了·李白篇
+[03:16.000]词：盛唐-
+[03:18.000]曲：高桥优
+[03:20.000]-
+[03:38.170]如今岁月一刹 半生已跨
+[03:41.790]不复当初鲜衣怒马
+[03:45.050]回首树下 花落无她 悲歌轻踏
+[03:50.540]舟上夜下淌指尖的月华
+[03:54.160]淌尽纸上 盛唐诗话
+[03:57.470]何为风雅 楚狂笑儒家
+[04:03.050]若我将声音吼得沙哑
+[04:06.220]你会不会抬眸应答
+[04:09.480]功名管他 世俗也罢 不屑繁杂
+[04:15.490]愿纵身一跃 追逐月华
+[04:18.700]区区人间 何足我齿挂
+[04:22.310]你们哪知 我本明月啊
+[04:27.890]一壶清酒 仗剑走天涯
+[04:34.660]
+
+
+</textarea>
+<script>
+    //先获取点击元素
+    var btn=document.getElementsByClassName("play")[0];
+    var con=document.getElementsByClassName("content")[0];
+    var myfirstmusic=document.getElementById("myfirstmusic")/*Element没复数，id唯一*/
+    //同一个按钮要实现两个功能（播放和暂停）做一个开关来存储点击的状态
+    var onoff=true;/*自定义一个开关*/
+    btn.onclick=function (){
+        if(onoff){
+            myfirstmusic.play();
+            onoff=false;
+            /*添加rotate类名*/
+            this.className="play rotate";
+        }
+        else{
+            myfirstmusic.pause();
+            onoff=true;
+            this.className="play";
+        }
+
+    }
+    var txt=document.getElementById("lrc");
+    var lrc=txt.value;
+    //console.log(lrc);
+    var lrcarry=lrc.split("[")
+    //console.log(lrcarry)
+    var html=""/*定义一个空变量来保存文本*/
+    for (var i=0;i<lrcarry.length;i++){
+        var arr=lrcarry[i].split("]");
+        //console.log(arr[0])
+        //把时间转化为秒钟，下面三行
+        var alltime=arr[0].split(".");
+        var time =alltime[0].split(":");
+        var timer=time[0]*60+time[1]*1;/*1一定要，把字符串强制转换为数字*/
+
+        var text=arr[1];
+        if(text){
+            html+="<p id="+timer+">"+text+"</p>"/*用p标签保存每一条歌词*/
+        }
+        con.innerHTML=html;
+    }
+    var opr=con.getElementsByTagName("p");
+    var num=0;
+    console.log(opr)
+    myfirstmusic.addEventListener("timeupdate",function (){
+        var curTime=parseInt(this.currentTime);/*获取当前时间*/
+        //console.log(curTime)
+        if(document.getElementById(curTime)){
+            for(var n=0;n<opr.length;n++){
+                opr[n].style.cssText= "color:antiquewhite;font-size: 12px;";
+            }
+            document.getElementById(curTime).style.cssText="color:rgb(242,110,111);font-size:18px";
+            if(opr[num+5].id==curTime){
+                con.style.top=-30*num+"px"
+                num++;
+            }
+
+        }
+
+    })
+    //监听歌曲播放完成，停止旋转
+    myfirstmusic.addEventListener("end",function (){
+        btn.className="play";
+        onoff=true;
+        con.style.top=0;
+        this.currentTime=0;
+    })
+</script>
+
+
+
+
+
+
 </body>
 </html>
