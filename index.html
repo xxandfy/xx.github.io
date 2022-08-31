@@ -16,55 +16,69 @@
             padding同理
             */
         }
-
+        html{
+            height: 100%;
+        }
+        body{
+            background-image: url("images/libai.jpg");
+            background-size: 100% 100%;
+            height:100%
+        }
         #firstbox{
             width: 320px;
             height: 600px;
-            background: blue;/*可直接加图片地址用url*/
+           /*可直接加图片地址用url*/
             margin: 50px auto;
         }
         .top{
             width: 320px;
             height: 30px;
-            background: black;
+            /*background: black;*/
         }
         .title{
-            width: 320px;
-            height: 30px;
-            background: aliceblue;
+            /*width: 320px;*/
+            /*height: 30px;*/
+            /*background: aliceblue;*/
             color: black;
             text-align: center;
-            font-size: 24px;
+            font-size: 30px;
             font-weight: bold;/*bold=700(100-900)*/
             line-height: 30px;/*行高*/
         }
         .singer{
-            width: 320px;
-            height: 30px;
-            background: aliceblue;
+            /*width: 320px;*/
+            /*height: 30px;*/
+            /*background: aliceblue;*/
+            margin: 10px auto;
             color: black;
             text-align: center;
-            font-size: 12px;
+            font-size: 25px;
             font-weight: bold;/*bold=700(100-900)*/
             line-height: 30px;/*行高*/
         }
         .play{
-            width: 180px;
-            height: 180px;
-            background: black;
-            margin: 20px auto;
-            border-radius: 50%;/*设置圆角*/
+            width: 160px;
+            height: 160px;
+            background-image: url("./images/image1.png");
+            position: absolute;
+            right: 80px;
+            top:60px;
+            border-radius: 50%;/*!*设置圆角*!*/
         }
         .lrc{
             width: 310px;
-            height: 275px;
-            border: 1px solid red;/*边框线：宽度 类型（实线）颜色*/
-            margin: auto;
+            height: 390px;
+            /*border: 1px solid red;!*边框线：宽度 类型（实线）颜色*!*/
+            margin: 20px auto;
+            /*position: absolute;*/
+            /*left: 100px;*/
+            /*top: 100px;*/
             text-align: center;
-            color: antiquewhite;
-            font-size: 12px;
+            color: black;
+            font-size: 20px;
             line-height: 30px;
             overflow: hidden;/*超出隐藏*/
+
 
         }
         /*用一个类名来保存旋转的功能*/
@@ -96,16 +110,17 @@
 
 
 <!--id表示唯一，不重复 class可重复-->
-    <div id="firstbox">
-        <div class="top"></div>
-        <div class="title"> 起风了(李白篇）</div>
-        <div class="singer">@灵魂调音师</div>
-        <div class="play"></div>
-        <div class="lrc">
-            <div class="content"></div>
-        </div>
-    </div>
-<audio  src="music/灵魂调音师 洛天依 - 起风了·李白篇.mp3" id="myfirstmusic" ></audio>
+<!--    <div id="firstbox"></div>-->
+<!--<div class="top"></div>-->
+<div class="title"> 起风了(李白篇）</div>
+<div class="singer">@灵魂调音师</div>
+<div class="play"></div>
+<div class="lrc">
+    <div class="content"></div>
+</div>
+
+
+<audio  src="music/灵魂调音师 洛天依 - 起风了·李白篇.mp3" id="myfirstmusic"  ></audio>
 <textarea id="lrc">
 [00:00.000]起风了·李白篇
 [00:04.000]词：盛唐-（bilibili）
@@ -203,7 +218,7 @@
     //console.log(lrc);
     var lrcarry=lrc.split("[")
     //console.log(lrcarry)
-    var html=""/*定义一个空变量来保存文本*/
+    var html1=""/*定义一个空变量来保存文本*/
     for (var i=0;i<lrcarry.length;i++){
         var arr=lrcarry[i].split("]");
         //console.log(arr[0])
@@ -214,9 +229,9 @@
 
         var text=arr[1];
         if(text){
-            html+="<p id="+timer+">"+text+"</p>"/*用p标签保存每一条歌词*/
+            html1+="<p id="+timer+">"+text+"</p>"/*用p标签保存每一条歌词*/
         }
-        con.innerHTML=html;
+        con.innerHTML=html1;
     }
     var opr=con.getElementsByTagName("p");
     var num=0;
@@ -226,9 +241,9 @@
         //console.log(curTime)
         if(document.getElementById(curTime)){
             for(var n=0;n<opr.length;n++){
-                opr[n].style.cssText= "color:antiquewhite;font-size: 12px;";
+                opr[n].style.cssText= "color:black;font-size: 20px;";
             }
-            document.getElementById(curTime).style.cssText="color:rgb(242,110,111);font-size:18px";
+            document.getElementById(curTime).style.cssText="color:rgb(242,110,111);font-size:25px";
             if(opr[num+5].id==curTime){
                 con.style.top=-30*num+"px"
                 num++;
@@ -238,9 +253,9 @@
 
     })
     //监听歌曲播放完成，停止旋转
-    myfirstmusic.addEventListener("end",function (){
-        btn.className="play";
+    myfirstmusic.addEventListener("ended",function (){
         onoff=true;
+        btn.className="play";
         con.style.top=0;
         this.currentTime=0;
     })
